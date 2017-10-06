@@ -1,17 +1,5 @@
 <div id="page-wrapper" class="open">
     
-          <!-- Sidebar -->
-          <!-- <div id="sidebar-wrapper">
-            <ul class="sidebar">
-              <li class="sidebar-main"><a href="index.html">Dashboard <span class="menu-icon fa fa-dashboard"></span></a></li>
-              <li class="sidebar-title"><span>NAVIGATION</span></li>
-              <li class="sidebar-list"><a href="index.html">Dashboard <span class="menu-icon fa fa-dashboard"></span></a></li>
-              <li class="sidebar-list"><a href="employee.html">Employees <span class="menu-icon fa fa-users"></span></a></li>
-              <li class="sidebar-list"><a href="location.html">Locations <span class="menu-icon fa fa-map-marker"></span></a></li>
-              <li class="sidebar-list"><a href="meeting.html">Meetings <span class="menu-icon fa fa-calendar"></span></a></li>
-            </ul>
-          </div> -->
-    
           <!-- End Sidebar -->
           <div id="content-wrapper">
     
@@ -40,7 +28,7 @@
                   <div class="widget">
                     <div class="widget-header">Locations
                       <div class="pull-right">
-                        <button class="btn btn-sm btn-info">+ Create</button>
+                        <button class="btn btn-sm btn-info" (click)="creatorVisible = true" >+ Create</button>
                       </div>
                     </div>
                     <div class="table-responsive">
@@ -72,7 +60,7 @@
               <div class="row">
     
                 <!-- Location listing -->
-                <div class="col-lg-12">
+                <div class="col-lg-12" *ngIf="creatorVisible">
                   <div class="widget">
                     <div class="widget-header">Create/Edit Template</div>
                     <div class="widget-body">
@@ -83,13 +71,13 @@
                         <!-- Name-->
                         <div class="controls">
                         Name
-                          <input id="location-name" name="widget-name" type="text" placeholder="foo-bar" class="input-medium">
+                          <input [(ngModel)]="newLocation.name" id="location-name" name="widget-name" type="text" placeholder="Location name" class="input-medium">
                         </div>
     
                         <!-- Color -->
                         <div class="controls">
                         Time Zone
-                          <select id="widget-color" name="location-timezone" class="input-large">
+                          <select [(ngModel)]="newLocation.timezone" id="widget-color" name="location-timezone" class="input-large">
                             <option>EST</option>
                             <option>CST</option>
                             <option>MST</option>
@@ -97,6 +85,8 @@
                             <option>Other</option>
                           </select>
                         </div>
+                        <button class="btn btn-sm btn-info" (click)="submitNewLocation()" >Finish</button>
+                        <button class="btn btn-sm btn-info" (click)="creatorVisible = false" >Cancel</button>
                       </form>
                     </div><!-- End Widget body -->
                   </div><!-- End Widget -->

@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DataService {
 
-  constructor() { }
+  constructor(private db:AngularFirestore) { }
 
   getLocations(){
     var mockLocationsJson = {
@@ -25,7 +28,8 @@ export class DataService {
       }
       ]
     }
-    return mockLocationsJson
+    // return mockLocationsJson
+    return this.db.collection('locations').valueChanges()
   }
 
   getMeetings(){
@@ -43,7 +47,8 @@ export class DataService {
       }
       ]
     }
-    return mockMeetingsJson
+    // return mockMeetingsJson
+    return this.db.collection('meetings').valueChanges()
   }
 
   getEmployees(){
@@ -66,7 +71,15 @@ export class DataService {
       }
       ]
     }
-    return mockEmployeesJson
+    // return mockEmployeesJson
+    return this.db.collection('employees').valueChanges()
+  }
+
+  addLocation(newLocation){
+    this.db.collection('locations').add(newLocation);
+  }
+  addMeeting(newMeeting){
+    this.db.collection('meetings').add(newMeeting);
   }
 
 }

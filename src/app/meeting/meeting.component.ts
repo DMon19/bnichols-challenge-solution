@@ -8,18 +8,34 @@ import { DataService } from '../data.service'
 })
 export class MeetingComponent implements OnInit {
 
-  meetings = [{
-    "datetime": "N/A",
-    "subject": "No meetings found",
-    "attendees": ["N/A"]
-  }];
-  
-  newMeeting = {};
+  meetings = [{}];
+  employees = [{}];
+  date:String;
+  time:String;
+  newMeeting = {
+    "datetime": "",
+    "subject": "",
+    "attendees": []
+  };
+
+  creatorVisible: boolean = false;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.meetings = this.dataService.getMeetings().Meetings;
+    this.dataService.getMeetings().subscribe(meetings => this.meetings = meetings)
+    this.dataService.getEmployees().subscribe(employees => this.employees = employees)
+  }
+
+  submitNewMeeting(){
+    this.newMeeting.datetime = this.date + " " + this.time
+    this.dataService.addMeeting(this.newMeeting)
+    this.newMeeting = {
+      "datetime": "",
+      "subject": "",
+      "attendees": []
+    };
+    this.creatorVisible = false;
   }
 
 }

@@ -1,18 +1,5 @@
 <div id="page-wrapper" class="open">
 
-  <!-- Sidebar -->
-  <!-- <div id="sidebar-wrapper">
-            <ul class="sidebar">
-              <li class="sidebar-main"><a href="index.html">Dashboard <span class="menu-icon fa fa-dashboard"></span></a></li>
-              <li class="sidebar-title"><span>NAVIGATION</span></li>
-              <li class="sidebar-list"><a href="index.html">Dashboard <span class="menu-icon fa fa-dashboard"></span></a></li>
-              <li class="sidebar-list"><a href="employee.html">Employees <span class="menu-icon fa fa-users"></span></a></li>
-              <li class="sidebar-list"><a href="location.html">Locations <span class="menu-icon fa fa-map-marker"></span></a></li>
-              <li class="sidebar-list"><a href="meeting.html">Meetings <span class="menu-icon fa fa-calendar"></span></a></li>
-            </ul>
-          </div> -->
-
-  <!-- End Sidebar -->
   <div id="content-wrapper">
 
     <div class="page-content">
@@ -40,7 +27,7 @@
           <div class="widget">
             <div class="widget-header">Meetings
               <div class="pull-right">
-                <button class="btn btn-sm btn-info">+ Create</button>
+                <button class="btn btn-sm btn-info" (click)="creatorVisible = true">+ Create</button>
               </div>
             </div>
             <div class="table-responsive">
@@ -74,7 +61,7 @@
       <div class="row">
 
         <!-- Widget listing -->
-        <div class="col-lg-12">
+        <div class="col-lg-12" *ngIf="creatorVisible">
           <div class="widget">
             <div class="widget-header">Create/Edit Template</div>
             <div class="widget-body">
@@ -85,28 +72,27 @@
                 <!-- Date/Time-->
                 <div class="controls">
                   Date
-                  <input id="meeting-date" name="meeting-date" type="date" class="input-medium">
+                  <input [(ngModel)]="date" id="meeting-date" name="meeting-date" type="date" class="input-medium">
                 </div>
                 <div class="controls">
                   Time
-                  <input id="meeting-time" name="meeting-time" type="time" class="input-medium">
+                  <input [(ngModel)]="time" id="meeting-time" name="meeting-time" type="time" class="input-medium">
                 </div>
 
                 <div class="controls">
                   Subject
-                  <input id="meeting-subject" name="meeting-subject" type="text" placeholder="foo-bar" class="input-medium">
+                  <input [(ngModel)]="newMeeting.subject" id="meeting-subject" name="meeting-subject" type="text" placeholder="Meeting subject" class="input-medium">
                 </div>
 
                 <!-- Attendees -->
                 <div class="controls">
                   Attendees
-                  <select multiple id="meeting-attendees" name="meeting-attendees" class="input-large">
-                            <option>Brent Nichols</option>
-                            <option>Liz Jones</option>
-                            <option>Kevin Bellomo</option>
-                          </select>
+                  <select [(ngModel)]="newMeeting.attendees" multiple id="meeting-attendees" name="meeting-attendees" class="input-large">
+                    <option *ngFor="let employee of employees">{{employee.name}}</option>
+                  </select>
                 </div>
-
+                <button class="btn btn-sm btn-info" (click)="submitNewMeeting()">Finish</button>
+                <button class="btn btn-sm btn-info" (click)="creatorVisible = false">Cancel</button>
               </form>
             </div>
             <!-- End Meeting body -->

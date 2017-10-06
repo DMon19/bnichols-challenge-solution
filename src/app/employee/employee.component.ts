@@ -8,15 +8,12 @@ import { DataService } from '../data.service'
 })
 export class EmployeeComponent implements OnInit {
 
-  employees = [{
-    "id": "N/A",
-    "name": "No employees found"
-  }];
+  employees = [{}];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.employees = this.dataService.getEmployees().Employees
+    this.dataService.getEmployees().subscribe(employees => this.employees = employees)
   }
 
 }

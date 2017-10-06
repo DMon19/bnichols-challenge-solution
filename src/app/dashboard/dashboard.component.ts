@@ -11,30 +11,16 @@ import { SearchSubjectPipe } from '../search-subject.pipe';
 export class DashboardComponent implements OnInit {
 
   locationSearchString: String;
-
-  locations = [{
-    "id": "N/A",
-    "name": "No Locations found",
-    "timezone": "N/A"
-  }]
-
-  meetings = [{
-    "datetime": "N/A",
-    "subject": "No meetings found",
-    "attendees": ["N/A"]
-  }];
-
-  employees = [{
-    "id": "N/A",
-    "name": "No employees found"
-  }];
+  locations = [{}]
+  meetings = [{}];
+  employees = [{}];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.locations = this.dataService.getLocations().Locations
-    this.meetings = this.dataService.getMeetings().Meetings
-    this.employees = this.dataService.getEmployees().Employees
+    this.dataService.getEmployees().subscribe(employees => this.employees = employees)
+    this.dataService.getMeetings().subscribe(meetings => this.meetings = meetings)
+    this.dataService.getLocations().subscribe(locations => this.locations = locations)
   }
 
 }
