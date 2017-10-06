@@ -13,9 +13,9 @@ import { LocationComponent } from './location/location.component';
 import { MeetingComponent } from './meeting/meeting.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { DataService } from './data.service';
-import { SearchNamePipe } from './search-name.pipe';
-import { SearchSubjectPipe } from './search-subject.pipe';
+import { DataService } from './core/data.service';
+import { SearchNamePipe } from './shared/search-name.pipe';
+import { SearchSubjectPipe } from './shared/search-subject.pipe';
 
 // Declares routes for components in the application
 const appRoutes: Routes = [

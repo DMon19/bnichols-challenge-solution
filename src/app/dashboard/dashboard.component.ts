@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { SearchNamePipe } from '../search-name.pipe';
-import { SearchSubjectPipe } from '../search-subject.pipe';
+import { DataService } from '../core/data.service';
 
 @Component({
   selector: 'app-dashboard',
