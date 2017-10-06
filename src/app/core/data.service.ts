@@ -8,7 +8,8 @@ export class DataService {
 
   constructor(private db: AngularFirestore) { }
 
-  // Retrieves from database
+  // Firebase (Google) integration, provides database endpoints. Config in app.module.ts
+  // Retrieves from database 
 
   getLocations() {
     return this.db.collection('locations').valueChanges()
