@@ -10,6 +10,7 @@ import { SearchSubjectPipe } from '../search-subject.pipe';
 })
 export class DashboardComponent implements OnInit {
 
+  // Basic declarations
   locationSearchString: String;
   locations = [{}]
   meetings = [{}];
@@ -18,6 +19,7 @@ export class DashboardComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    // Observables pulling data through the data service into the component for consumption
     this.dataService.getEmployees().subscribe(employees => this.employees = employees)
     this.dataService.getMeetings().subscribe(meetings => this.meetings = meetings)
     this.dataService.getLocations().subscribe(locations => this.locations = locations)

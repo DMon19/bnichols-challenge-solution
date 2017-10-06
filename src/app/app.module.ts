@@ -17,7 +17,7 @@ import { DataService } from './data.service';
 import { SearchNamePipe } from './search-name.pipe';
 import { SearchSubjectPipe } from './search-subject.pipe';
 
-
+// Declares routes for components in the application
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },

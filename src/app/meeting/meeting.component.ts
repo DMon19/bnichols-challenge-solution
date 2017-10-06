@@ -29,6 +29,7 @@ export class MeetingComponent implements OnInit {
 
   submitNewMeeting(){
     this.newMeeting.datetime = this.date + " " + this.time
+    // Concatenates date and time together to form one string from two distinct inputs
     this.dataService.addMeeting(this.newMeeting)
     this.newMeeting = {
       "datetime": "",
