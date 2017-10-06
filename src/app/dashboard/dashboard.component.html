@@ -1,0 +1,171 @@
+<div id="page-wrapper" class="open">
+
+  <!-- Sidebar -->
+  <!-- <div id="sidebar-wrapper">
+            <ul class="sidebar">
+              <li class="sidebar-main"><a href="index.html">Dashboard <span class="menu-icon fa fa-dashboard"></span></a></li>
+              <li class="sidebar-title"><span>NAVIGATION</span></li>
+              <li class="sidebar-list"><a href="index.html">Dashboard <span class="menu-icon fa fa-dashboard"></span></a></li>
+              <li class="sidebar-list"><a href="employee.html">Employees <span class="menu-icon fa fa-users"></span></a></li>
+              <li class="sidebar-list"><a href="location.html">Locations <span class="menu-icon fa fa-map-marker"></span></a></li>
+              <li class="sidebar-list"><a href="meeting.html">Meetings <span class="menu-icon fa fa-calendar"></span></a></li>
+            </ul>
+          </div> -->
+
+  <!-- End Sidebar -->
+
+  <div id="content-wrapper">
+
+    <div class="page-content">
+
+      <!-- Header Bar -->
+      <div class="row header col-xs-12">
+        <div class="user pull-right">
+          <div class="item dropdown">
+            <a href="#" class="dropdown-toggle"><img src="assets/img/avatar.jpg" alt=""></a>
+          </div>
+        </div>
+        <div class="meta">
+          <div class="page">Dashboard</div>
+          <div class="breadcrumb-links">Home / Dashboard</div>
+        </div>
+      </div>
+      <!-- End Header Bar -->
+
+      <!-- Dashboard Boxes -->
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="widget">
+            <div class="widget-header">
+              <div class="widget-icon green pull-left">
+                <i class="fa fa-users"></i>
+              </div>
+              <div class="title">{{employees.length}}</div>
+              <div class="comment">Employees</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="widget">
+            <div class="widget-header">
+              <div class="widget-icon yellow pull-left">
+                <i class="fa fa-map-marker"></i>
+              </div>
+              <div class="title">{{locations.length}}</div>
+              <div class="comment">Locations</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="widget">
+            <div class="widget-header">
+              <div class="widget-icon red pull-left">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <div class="title">{{meetings.length}}</div>
+              <div class="comment">Meetings</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tables -->
+      <div class="row">
+
+        <!-- Employees listing -->
+        <div class="col-lg-6">
+          <div class="widget">
+            <div class="widget-header">Employees
+              <div class="pull-right"><input type="text" class="form-control input-sm" [(ngModel)]="employeeSearchString"></div>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-center">ID</th>
+                    <th>Name</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let employee of employees  | searchName : employeeSearchString">
+                    <td class="text-center"> {{ employee.id }}</td>
+                    <td>{{ employee.name }}</td>
+                  </tr>
+                </tbody>
+
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- End Employees -->
+
+        <!-- divider 
+                <div class="col-lg-1">
+                </div> -->
+
+        <!-- Locations listing -->
+        <div class="col-lg-6">
+          <div class="widget">
+            <div class="widget-header">Locations
+              <div class="pull-right"><input type="text" class="form-control input-sm" [(ngModel)]="locationSearchString"></div>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-center">ID</th>
+                    <th>Name</th>
+                    <th>Time Zone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let location of locations | searchName : locationSearchString">
+                    <td class="text-center">{{location.id}}</td>
+                    <td>{{location.name}}</td>
+                    <td>{{location.timezone}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- End Locations -->
+
+        <!-- Meetings listing -->
+        <div class="col-lg-12">
+          <div class="widget">
+            <div class="widget-header">Meetings
+              <div class="pull-right"><input type="text" class="form-control input-sm" [(ngModel)]="meetingSearchString"></div>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-center">Date/Time</th>
+                    <th>Subject</th>
+                    <th>Attendees</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let meeting of meetings  | searchSubject : meetingSearchString">
+                      <th class="text-center">{{meeting.datetime}}</th>
+                      <th>{{meeting.subject}}</th>
+                      <th>{{meeting.attendees}}</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- End Meetings -->
+
+      </div>
+      <!-- End Tables -->
+
+    </div>
+    <!-- End Page Content -->
+  </div>
+  <!-- End Content Wrapper -->
+</div>
+<!-- End Page Wrapper -->

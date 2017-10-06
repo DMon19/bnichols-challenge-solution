@@ -1,0 +1,77 @@
+<div id="page-wrapper" class="open">
+
+  <!-- Sidebar -->
+  <!-- <div id="sidebar-wrapper">
+            <ul class="sidebar">
+              <li class="sidebar-main"><a href="index.html">Dashboard <span class="menu-icon fa fa-dashboard"></span></a></li>
+              <li class="sidebar-title"><span>NAVIGATION</span></li>
+              <li class="sidebar-list"><a href="index.html">Dashboard <span class="menu-icon fa fa-dashboard"></span></a></li>
+              <li class="sidebar-list"><a href="employee.html">Employees <span class="menu-icon fa fa-users"></span></a></li>
+              <li class="sidebar-list"><a href="location.html">Locations <span class="menu-icon fa fa-map-marker"></span></a></li>
+              <li class="sidebar-list"><a href="meeting.html">Meetings <span class="menu-icon fa fa-calendar"></span></a></li>
+            </ul>
+          </div>
+     -->
+  <!-- End Sidebar -->
+  <div id="content-wrapper">
+
+    <div class="page-content">
+
+      <!-- Header Bar -->
+      <div class="row header col-xs-12">
+        <div class="user pull-right">
+          <div class="item dropdown">
+            <a href="#" class="dropdown-toggle"><img src="assets/img/avatar.jpg" alt=""></a>
+          </div>
+        </div>
+        <div class="meta">
+          <div class="page">Dashboard</div>
+          <div class="breadcrumb-links">Home / Dashboard</div>
+        </div>
+      </div>
+      <!-- End Header Bar -->
+
+
+      <!-- Tables -->
+      <div class="row">
+
+        <!-- Employee listing -->
+        <div class="col-lg-12">
+          <div class="widget">
+            <div class="widget-header">Employees
+              <div class="pull-right"><input type="text" class="form-control input-sm" [(ngModel)]="employeeSearchString"></div>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-center">ID</th>
+                    <th>Name</th>
+                    <th>Avatar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let employee of employees  | searchName : employeeSearchString">
+                    <td class="text-center"> {{ employee.id }}</td>
+                    <td>{{ employee.name }}</td>
+                    <td>
+                      <img *ngIf="employee.gender == 'male'" width="50" src="assets/img/male.png">
+                      <img *ngIf="employee.gender == 'female'" width="50" src="assets/img/female.png">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- End Employees -->
+
+      </div>
+      <!-- End Row -->
+
+    </div>
+    <!-- End Page Content -->
+  </div>
+  <!-- End Content Wrapper -->
+</div>
+<!-- End Page Wrapper -->
